@@ -1,0 +1,14 @@
+<launch>
+    <!-- 加载 URDF 模型 -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find car_description)/urdf/new_testbot.xacro"/>
+    
+    <!-- 启动机器人状态发布节点 -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+
+    <!-- 启动关节状态发布节点 -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <!-- 发布 base_footprint 到 base_link 的静态 TF -->
+    <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0 0 0 0 base_footprint base_link 100"/>
+</launch>
+

@@ -1,0 +1,24 @@
+<launch>
+  <param name="use_sim_time" value="true"/>
+  <!-- 加载 URDF 文件 -->
+  <param name="robot_description" command="$(find xacro)/xacro $(find car_description)/urdf/testbot.xacro"/>
+  
+  <!-- 启动 Gazebo 世界 -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find car_description)/worlds/final02.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include> 
+
+  <!-- 加载机器人模型到 Gazebo -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model testbot"/>
+
+  <!-- 启动机器人状态发布节点 -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+  <node pkg="joint_state_publisher" name="joint_state_publisher" type="joint_state_publisher" />
+  <!-- 启动键盘控制节点 -->
+  <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop" output="screen"/>  
+</launch>

@@ -1,0 +1,10 @@
+<launch>
+    <!-- 包含 robot_common.launch 文件 -->
+    <include file="$(find car_description)/launch/robot_common.launch"/>
+
+    <!-- 在参数服务器设置参数 -->
+    <arg name="rvizconfig" default="$(find car_description)/rviz/car1.rviz"/>
+
+    <!-- 启动 RViz -->
+    <node name="rviz" pkg="rviz" args="-d $(arg rvizconfig)" type="rviz" required="true"/>
+</launch>

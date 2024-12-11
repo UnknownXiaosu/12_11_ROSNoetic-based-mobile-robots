@@ -1,0 +1,17 @@
+<launch>
+  <!--在参数服务器设置参数-->
+  <arg name="model" default="$(find car_description)/urdf/testbot.xacro"/>
+  <arg name="gui" default="true"/>
+  <arg name="rvizconfig" default="$(find car_description)/rviz/car1.rviz"/>
+  <arg name="use_sim_time" value="true"/>
+
+  <!-- 在参数服务器中倒入urdf模型-->
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
+  <param name="use_gui" value="$(arg gui)"/>
+  <!-- 添加关节状态发布节点 -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <!-- 添加机器人状态发布节点-->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <!-- 启动rviz-->
+  <node name="rviz" pkg="rviz" args="-d $(arg rvizconfig)" type="rviz" required="true"/>
+</launch>

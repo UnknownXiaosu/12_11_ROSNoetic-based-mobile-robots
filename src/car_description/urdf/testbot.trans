@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<robot name="testbot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+
+<!-- 传动装置和控制器的配置-->
+<!-- 这里是按照mecanum四轮配置的-->
+<transmission name="Revolute 1_tran"> <!-- 定义传动装置-->
+  <type>transmission_interface/SimpleTransmission</type>   <!-- 定义传动装置的类型 / 这里是一个简单的传动装置--> 
+  <joint name="Revolute 1">   <!-- 定义一个关节-->
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>  <!-- 关节的控制接口是基于施加的力/力矩的-->
+  </joint>
+  <actuator name="Revolute 1_actr">  <!-- 为执行的传动器指定名称-->
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>  <!-- 执行器使用和干节控制一样的硬件接口-->
+    <mechanicalReduction>1</mechanicalReduction> <!-- 机械传动效率为1，即输入和输出之间没有减速 / 增速-->
+  </actuator>
+</transmission>
+
+<transmission name="Revolute 2_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Revolute 2">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Revolute2 _actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="Revolute 3_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Revolute 3">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Revolute 3_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="Revolute 4_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Revolute 4">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Revolute 4_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+</robot>

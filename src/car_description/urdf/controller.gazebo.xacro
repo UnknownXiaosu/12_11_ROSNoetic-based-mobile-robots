@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<robot name="testbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:macro name = "omni_steering" params="">
+    <gazebo>
+		<!-- 配置一个名为omni_steering的插件-->
+	    <plugin name="omni_steering" filename="libgazebo_ros_planar_move.so">
+		  <alwaysOn>true</alwaysOn>			<!-- 插件始终为启用状态-->
+	      <commandTopic>cmd_vel</commandTopic>		<!-- 接受的话题为cmd_vel-->
+	      <odometryTopic>odom</odometryTopic>	<!-- 发布的里程计的话题名称为odom-->
+	      <odometryFrame>odom</odometryFrame>	<!-- 里程计的参考坐标系为odom-->
+	      <odometryRate>50.0</odometryRate>		<!-- 发布的频率为50-->
+	      <robotBaseFrame>base_link</robotBaseFrame>	<!-- 机器人的参考坐标系为base_link-->
+	      <publishTF>true</publishTF>	<!-- 发布坐标系转换信息-->
+	    </plugin>
+	</gazebo> 
+</xacro:macro>
+</robot>

@@ -1,0 +1,8 @@
+prefix=/home/xiaosu/catkin_ws/devel
+
+Name: whi_rviz_plugins
+Description: Description of whi_rviz_plugins
+Version: 0.0.1
+Cflags: -I/home/xiaosu/catkin_ws/src/whi_rviz_plugins/include
+Libs: -L${prefix}/lib 
+Requires: 

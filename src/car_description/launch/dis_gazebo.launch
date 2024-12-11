@@ -1,0 +1,10 @@
+<launch>
+    <!-- 包含 robot_common.launch 文件 -->
+    <include file="$(find car_description)/launch/robot_common.launch"/> 
+
+    <!-- 启动 gazebo -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+
+    <!-- 在 gazebo 中显示机器人模型 -->
+    <node pkg="gazebo_ros" type="spawn_model" name="model" args="-urdf -model testbot -param robot_description"/>
+</launch>

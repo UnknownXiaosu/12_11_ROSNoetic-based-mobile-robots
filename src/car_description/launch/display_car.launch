@@ -1,0 +1,12 @@
+<launch>
+    <!-- 加载机器人描述参数 -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find car_description)/urdf/disinfection_robot.urdf'" />
+
+    <!-- 启动 robot_state_publisher 节点 -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+        <param name="robot_description" command="$(find xacro)/xacro '$(find car_description)/urdf/disinfection_robot.urdf'" />
+    </node>
+
+    <!-- 启动 RViz 并加载配置文件（如果有） -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find car_description)/rviz/disinfection_robot.rviz" output="screen" />
+</launch>
